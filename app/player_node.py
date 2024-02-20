@@ -1,7 +1,9 @@
 from player import Player
+
+
 class PlayerNode:
-    def __init__(self, player1):
-        self._player = player1
+    def __init__(self, player):
+        self._player = player
         self._next = None
         self._prev = None
 
@@ -23,5 +25,3 @@ class PlayerNode:
 
     def __str__(self):
         return f"{self.player.uid},{self.player.name}"
-
-
