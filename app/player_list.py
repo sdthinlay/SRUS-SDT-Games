@@ -4,8 +4,24 @@ from player import Player
 
 class PlayerList:
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self._head = None
+        self._tail = None
+
+    @property
+    def head(self):
+        return self._head
+
+    @head.setter
+    def head(self, node):
+        self._head = node
+
+    @property
+    def tail(self):
+        return self._tail
+
+    @tail.setter
+    def tail(self, node):
+        self._tail = node
 
     def append_at_beginning(self, player_id, player_name):
         new_player = PlayerNode(Player(player_id, player_name))
@@ -20,5 +36,3 @@ class PlayerList:
 
     def is_empty(self):
         return self.head is None
-
-    
