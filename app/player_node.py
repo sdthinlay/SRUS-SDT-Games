@@ -4,8 +4,24 @@ from player import Player
 class PlayerNode:
     def __init__(self, player):
         self._player = player
-        self.next = None
-        self.prev = None
+        self._next = None
+        self._prev = None
+
+    @property
+    def next(self):
+        return self._next
+
+    @next.setter
+    def next(self, node):
+        self._next = node
+
+    @property
+    def prev(self):
+        return self.prev
+
+    @prev.setter
+    def prev(self, node):
+        self._prev = node
 
     @property
     def player(self):
