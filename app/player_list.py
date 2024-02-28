@@ -7,8 +7,8 @@ class PlayerList:
         self._head = None
         self._tail = None
 
-    def append_at_beginning(self, player_id, player_name):
-        new_player = PlayerNode(Player(player_id, player_name))
+    def append_at_beginning(self, player: Player):
+        new_player = PlayerNode(player)
         if self.is_empty():
             self._head = new_player
             self._tail = new_player
@@ -18,8 +18,8 @@ class PlayerList:
             self._head.next = previous_player
             previous_player.prev = self._head
 
-    def append_at_tail(self, player_id, player_name):
-        new_player = PlayerNode(Player(player_id, player_name))
+    def append_at_tail(self, player: Player):
+        new_player = PlayerNode(player)
         if self.is_empty():
             self._head = new_player
             self._tail = new_player
@@ -30,6 +30,3 @@ class PlayerList:
 
     def is_empty(self):
         return self._head is None
-
-
-
