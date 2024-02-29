@@ -50,5 +50,24 @@ class PlayerList:
             else:
                 self._head = None
 
+    def pop_by_key(self, key):
+        if self.is_empty():
+            raise ValueError("Player list is empty")
+        else:
+            current_player = self._head
+            while current_player is not None:
+                if current_player.key == key:
+                    if current_player.prev is not None:
+                        current_player.prev.next = current_player.next
+                    else:
+                        self._head = current_player.next
+                        if current_player.next is not None:
+                            current_player.next.prev = None
+                    return "Player removed successfully"
+                current_player = current_player.next
+            raise ValueError("No player found")
+
     def is_empty(self):
         return self._head is None
+
+

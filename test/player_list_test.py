@@ -56,3 +56,10 @@ class TestPlayerList(unittest.TestCase):
         self.playerList.append_at_tail(self.player3)
         self.playerList.pop_at_tail()
         self.assertIs(self.playerList._tail.player, self.player2)
+
+    def test_pop_by_key(self):
+        self.playerList.append_at_tail(self.player1)
+        self.playerList.append_at_tail(self.player2)
+        self.playerList.append_at_tail(self.player3)
+        self.playerList.pop_by_key(1)
+        self.assertIs(self.playerList._head.player, self.player2)
