@@ -28,5 +28,27 @@ class PlayerList:
             new_player.prev = self._tail
             self._tail = new_player
 
+    def pop_at_beginning(self):
+        if self.is_empty():
+            raise ValueError("Player list is empty")
+        else:
+            current_player = self._head
+            self._head = current_player.next
+            if self._head is not None:
+                self._head.prev = None
+            else:
+                self._tail = None
+
+    def pop_at_tail(self):
+        if self.is_empty():
+            raise ValueError("Player list is empty")
+        else:
+            current_player = self._tail
+            self._tail = current_player.prev
+            if self._tail is not None:
+                self._tail.next = None
+            else:
+                self._head = None
+
     def is_empty(self):
         return self._head is None
