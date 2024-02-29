@@ -67,6 +67,18 @@ class PlayerList:
                 current_player = current_player.next
             raise ValueError("No player found")
 
+    def display_list(self, forward=True):
+        if forward:
+            current_player = self._head
+            while current_player is not None:
+                print(current_player, end="|")
+                current_player = current_player.next
+        else:
+            current_player = self._tail
+            while current_player is not None:
+                print(current_player, end="|")
+                current_player = current_player.prev
+
     def is_empty(self):
         return self._head is None
 
