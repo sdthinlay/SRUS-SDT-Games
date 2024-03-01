@@ -3,11 +3,21 @@ from player import Player
 
 
 class PlayerList:
+    """
+    The class responsible for creating player list
+    """
     def __init__(self):
+        """
+        Initializes the player list
+        """
         self._head = None
         self._tail = None
 
     def append_at_beginning(self, player: Player):
+        """
+        Adds a player to the beginning of the list
+        parameter: player - the player added to the list
+        """
         new_player = PlayerNode(player)
         if self.is_empty():
             self._head = new_player
@@ -19,6 +29,10 @@ class PlayerList:
             previous_player.prev = self._head
 
     def append_at_tail(self, player: Player):
+        """
+        Adds a player to the end of the list
+        parameter: player - the player added to the list
+        """
         new_player = PlayerNode(player)
         if self.is_empty():
             self._head = new_player
@@ -29,6 +43,9 @@ class PlayerList:
             self._tail = new_player
 
     def pop_at_beginning(self):
+        """
+        Removes the player from the beginning of the list
+        """
         if self.is_empty():
             raise ValueError("Player list is empty")
         else:
@@ -40,6 +57,9 @@ class PlayerList:
                 self._tail = None
 
     def pop_at_tail(self):
+        """
+        Removes the player from the end of the list
+        """
         if self.is_empty():
             raise ValueError("Player list is empty")
         else:
@@ -51,6 +71,10 @@ class PlayerList:
                 self._head = None
 
     def pop_by_key(self, key):
+        """
+        Removes the player by its unique key from the list
+        parameter: key - The unique key of each player in the list
+        """
         if self.is_empty():
             raise ValueError("Player list is empty")
         else:
@@ -63,11 +87,15 @@ class PlayerList:
                         self._head = current_player.next
                         if current_player.next is not None:
                             current_player.next.prev = None
-                    return "Player removed successfully"
+                    print("Player removed successfully")
                 current_player = current_player.next
             raise ValueError("No player found")
 
     def display_list(self, forward=True):
+        """
+        Displays the entire players on the list
+        parameter: forward: True to display the list in forward direction and False to display the list in reverse direction
+        """
         if forward:
             current_player = self._head
             while current_player is not None:
@@ -80,6 +108,10 @@ class PlayerList:
                 current_player = current_player.prev
 
     def is_empty(self):
+        """
+        Checks if the player list is empty or not
+        return: True if the player list is empty and False if the player list is not empty
+        """
         return self._head is None
 
 
