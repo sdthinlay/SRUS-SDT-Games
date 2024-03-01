@@ -1,9 +1,16 @@
+from __future__ import annotations
+from player import Player
+
 
 class PlayerNode:
     """
     The class responsible for creating player node
     """
-    def __init__(self, player):
+    _next: Player | None
+    _prev: Player | None
+    _player: Player
+
+    def __init__(self, player: Player):
         """
         Initializes the player node
         parameter: player - The player object in the node
@@ -13,7 +20,7 @@ class PlayerNode:
         self._prev = None
 
     @property
-    def next(self):
+    def next(self) -> Player | None:
         """
         The next player node
         return: next player node
@@ -29,7 +36,7 @@ class PlayerNode:
         self._next = node
 
     @property
-    def prev(self):
+    def prev(self) -> Player | None:
         """
         The previous player node
         return: previous player node
@@ -45,7 +52,7 @@ class PlayerNode:
         self._prev = node
 
     @property
-    def player(self):
+    def player(self) -> Player | None:
         """
         The player object in the node
         return: player - player object
@@ -53,7 +60,7 @@ class PlayerNode:
         return self._player
 
     @property
-    def key(self):
+    def key(self) -> int:
         """
         The unique key of the player in the node
         return: player uid - unique key of the player in the node

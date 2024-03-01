@@ -6,6 +6,9 @@ class PlayerList:
     """
     The class responsible for creating player list
     """
+    _head = None
+    _tail = None
+
     def __init__(self):
         """
         Initializes the player list
@@ -70,7 +73,9 @@ class PlayerList:
             else:
                 self._head = None
 
-    def pop_by_key(self, key):
+    key = int
+
+    def pop_by_key(self, key: int):
         """
         Removes the player by its unique key from the list
         parameter: key - The unique key of each player in the list
@@ -91,7 +96,7 @@ class PlayerList:
                 current_player = current_player.next
             raise ValueError("No player found")
 
-    def display_list(self, forward=True):
+    def display_list(self, forward: bool = True) -> None:
         """
         Displays the entire players on the list
         parameter: forward: True to display the list in forward direction and False to display the list in reverse direction
@@ -107,11 +112,9 @@ class PlayerList:
                 print(current_player, end="|")
                 current_player = current_player.prev
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         """
         Checks if the player list is empty or not
         return: True if the player list is empty and False if the player list is not empty
         """
         return self._head is None
-
-
