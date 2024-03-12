@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Player:
     """
     The class responsible for creating player
@@ -5,7 +8,7 @@ class Player:
     _player_id = int
     _player_name = str
 
-    def __init__(self, player_id:int, player_name:str) -> None:
+    def __init__(self, player_id: int, player_name: str) -> None:
         """
         Initialize the player object with ID and name
         parameter: player_id - The id of the player
@@ -13,6 +16,7 @@ class Player:
         """
         self._player_name = player_name
         self._player_id = player_id
+        self._player_password = None
 
     @property
     def uid(self) -> int:

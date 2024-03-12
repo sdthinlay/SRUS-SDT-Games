@@ -1,4 +1,6 @@
 import unittest
+
+import player
 from player import Player
 
 
@@ -11,6 +13,8 @@ class PlayerTest(unittest.TestCase):
         my_player = Player(1, "sdt")
         self.assertEqual("sdt", my_player.name)
 
+    def test_add_password(self):
+        my_player = Player(1, "sdt")
+        my_player.add_password("Password1")
+        self.assertEqual(my_player.check_password("Password1"), True)
 
-if __name__ == '__main__':
-    unittest.main()

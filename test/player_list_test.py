@@ -65,5 +65,3 @@ class TestPlayerList(unittest.TestCase):
         self.assertIs(self.playerList._head.player, self.player2)
 
 
-
-

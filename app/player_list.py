@@ -1,3 +1,4 @@
+from __future__ import annotations
 from player_node import PlayerNode
 from player import Player
 
@@ -16,7 +17,7 @@ class PlayerList:
         self._head = None
         self._tail = None
 
-    def append_at_beginning(self, player: Player):
+    def append_at_beginning(self, player: Player) -> None:
         """
         Adds a player to the beginning of the list
         parameter: player - the player added to the list
@@ -31,7 +32,7 @@ class PlayerList:
             self._head.next = previous_player
             previous_player.prev = self._head
 
-    def append_at_tail(self, player: Player):
+    def append_at_tail(self, player: Player) -> None:
         """
         Adds a player to the end of the list
         parameter: player - the player added to the list
