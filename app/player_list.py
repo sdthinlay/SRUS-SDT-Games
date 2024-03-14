@@ -119,3 +119,4 @@ class PlayerList:
         return: True if the player list is empty and False if the player list is not empty
         """
         return self._head is None
+

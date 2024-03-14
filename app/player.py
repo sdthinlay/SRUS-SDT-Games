@@ -1,4 +1,5 @@
 from __future__ import annotations
+from argon2 import PasswordHasher
 
 
 class Player:
@@ -34,9 +35,28 @@ class Player:
         """
         return self._player_name
 
+    def add_password(self, password: str) -> None:
+        password_hasher = PasswordHasher()
+        hashed_password = password_hasher.hash(password)
+        self._player_password = hashed_password
+
+    def verify_password(self, password: str) -> bool:
+        if self._player_password is None:
+            return False
+        password_hasher = PasswordHasher()
+        try:
+            password_hasher.verify(self._player_password, password)
+            return True
+        except Exception as e:
+            e = "Wrong password"
+            print(e)
+            return False
+
     def __str__(self) -> str:
         """
         String representation of the player
         return: uid and name - Player's unique id and name
         """
         return f'{self.uid} {self.name}.'
+
+
