@@ -36,11 +36,19 @@ class Player:
         return self._player_name
 
     def add_password(self, password: str) -> None:
+        """
+        Add password to the player
+        :parameter password: The password to be added
+        """
         password_hasher = PasswordHasher()
         hashed_password = password_hasher.hash(password)
         self._player_password = hashed_password
 
     def verify_password(self, password: str) -> bool:
+        """
+        Verifies the passsword against the player's password
+        :parameter password:  The password to be verified
+        """
         if self._player_password is None:
             return False
         password_hasher = PasswordHasher()
