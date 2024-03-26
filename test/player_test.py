@@ -33,3 +33,12 @@ class PlayerTest(unittest.TestCase):
         my_player.add_password("Password1")
         self.assertFalse(my_player.verify_password(""))
 
+    def test_equal_operator(self):
+        my_player1 = Player(2, "YT", 45)
+        my_player2 = Player(3, "AB", 45)
+        self.assertEqual(my_player1.__eq__(my_player2), True)
+
+    def test_greater_than_or_equal_to_operator(self):
+        my_player1 = Player(2, "YT", 75)
+        my_player2 = Player(3, "AB", 45)
+        self.assertEqual(my_player1.__ge__(my_player2), True)
