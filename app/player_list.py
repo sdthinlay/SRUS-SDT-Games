@@ -1,4 +1,3 @@
-from __future__ import annotations
 from player_node import PlayerNode
 from player import Player
 
@@ -10,19 +9,19 @@ class PlayerList:
     _head = None
     _tail = None
 
-    def __init__(self):
+    def __init__(self, head=None, tail=None):
         """
         Initializes the player list
         """
-        self._head = None
-        self._tail = None
+        self._head = head
+        self._tail = tail
 
-    def append_at_beginning(self, player: Player) -> None:
+    def append_at_beginning(self, player: PlayerNode):
         """
         Adds a player to the beginning of the list
         parameter: player - the player added to the list
         """
-        new_player = PlayerNode(player)
+        new_player = player
         if self.is_empty():
             self._head = new_player
             self._tail = new_player
@@ -32,12 +31,12 @@ class PlayerList:
             self._head.next = previous_player
             previous_player.prev = self._head
 
-    def append_at_tail(self, player: Player) -> None:
+    def append_at_tail(self, player: PlayerNode):
         """
         Adds a player to the end of the list
         parameter: player - the player added to the list
         """
-        new_player = PlayerNode(player)
+        new_player = player
         if self.is_empty():
             self._head = new_player
             self._tail = new_player
@@ -74,8 +73,6 @@ class PlayerList:
             else:
                 self._head = None
 
-    key = int
-
     def pop_by_key(self, key: int):
         """
         Removes the player by its unique key from the list
@@ -94,6 +91,7 @@ class PlayerList:
                         if current_player.next is not None:
                             current_player.next.prev = None
                     print("Player removed successfully")
+                    return
                 current_player = current_player.next
             raise ValueError("No player found")
 
@@ -102,16 +100,16 @@ class PlayerList:
         Displays the entire players on the list
         parameter: forward: True to display the list in forward direction and False to display the list in reverse direction
         """
+
         if forward:
             current_player = self._head
-            while current_player is not None:
-                print(current_player, end="|")
-                current_player = current_player.next
+            current_player = current_player.next
         else:
             current_player = self._tail
-            while current_player is not None:
-                print(current_player, end="|")
-                current_player = current_player.prev
+            current_player = current_player.prev
+
+        while current_player is not None:
+            print(current_player, end="|")
 
     def is_empty(self) -> bool:
         """
@@ -119,4 +117,3 @@ class PlayerList:
         return: True if the player list is empty and False if the player list is not empty
         """
         return self._head is None
-

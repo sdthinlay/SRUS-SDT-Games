@@ -19,6 +19,7 @@ class PlayerNode:
         self._next = None
         self._prev = None
 
+
     @property
     def next(self) -> Player | None:
         """
