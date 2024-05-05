@@ -4,6 +4,7 @@ class PlayerBNode:
         self._left = left
         self._right = right
 
+
     @property
     def player(self):
         return self._player
